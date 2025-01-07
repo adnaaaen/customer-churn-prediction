@@ -1,0 +1,5 @@
+kagglehub==0.3.6
+camel-converter==4.0.1
+pandas
+numpy
+matplotlib

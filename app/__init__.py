@@ -1,15 +1,15 @@
 import logging
 import os
 import sys
-from app.config import ProjectDirs
+from config.paths import ProjectPaths
 
-PROJECT_DIR = ProjectDirs.get_dir("PROJECT_DIR")
+PROJECT_DIR = ProjectPaths.get_dir("PROJECT_PATH")
 logging_fmt = (
-    "%(asctime)s: %(levelname)s, on %(module)s, lineno=%(lineno)d, msg=%(message)s"
+    "%(asctime)s: %(levelname)s, on %(module)s, lineno=%(lineno)d, %(message)s"
 )
 dir = os.path.join(PROJECT_DIR, "logs/")
 os.makedirs(dir, exist_ok=True)
-filename = os.path.join(dir, "application_logs.log")
+filename = os.path.join(dir, "app_logs.log")
 
 logging.basicConfig(
     level=logging.INFO,
