@@ -27,7 +27,7 @@ class DataIngestionPipeline:
             return False
 
     def load_dataset(self) -> bool:
-        logger.info(">>>DATA LOADEDING START<<<")
+        logger.info(">>>DATA LOADING START<<<")
         try:
             train_df = pd.read_csv(
                 os.path.join(
@@ -40,15 +40,12 @@ class DataIngestionPipeline:
                 )
             )
             df = pd.concat([train_df, test_df])
-            if not os.path.exists(os.path.join(self.DATASET_PATH, "merged")):
-                os.makedirs(os.path.join(self.DATASET_PATH, "merged"))
-                df.to_csv(
-                    os.path.join(self.DATASET_PATH, "merged/customer_churn.csv"),
-                    index=False,
-                )
-                logger.info("combined dataset saved successfully")
-            else:
-                logger.info("merged dataset already exisist")
+            os.makedirs(os.path.join(self.DATASET_PATH, "merged"), exist_ok=True)
+            df.to_csv(
+                os.path.join(self.DATASET_PATH, "merged/customer_churn.csv"),
+                index=False,
+            )
+            logger.info("combined dataset saved successfully")
             logger.info(">>>DATA LOADING END<<<")
             return True
         except Exception as e:
@@ -59,8 +56,8 @@ class DataIngestionPipeline:
         download_status = self.download_dataset()
         load_status = self.load_dataset()
         if download_status and load_status:
-            logger.info(f">>>DATA INGESTION PIPELINE SUCCESSFULLY!<<<")
+            logger.info(">>>DATA INGESTION PIPELINE RUN SUCCESSFULLY!<<<")
             return True
         else:
-            logger.error(f">>>DATA INGESTION PIPELINE FAILED!<<<")
+            logger.error(">>>DATA INGESTION PIPELINE FAILED SOMEWHERE!<<<")
             return False
