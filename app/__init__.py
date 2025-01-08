@@ -14,7 +14,10 @@ filename = os.path.join(dir, "app_logs.log")
 logging.basicConfig(
     level=logging.INFO,
     format=logging_fmt,
-    handlers=[logging.FileHandler(filename), logging.StreamHandler(sys.stdout)],
+    handlers=[
+        logging.FileHandler(filename, mode="w"),
+        logging.StreamHandler(sys.stdout),
+    ],
 )
 
 logger = logging.getLogger("CreditCardFraud")
