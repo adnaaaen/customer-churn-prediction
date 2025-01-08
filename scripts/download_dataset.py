@@ -4,6 +4,7 @@ import os
 
 
 def get_from_kaggle(destination: str, kaggle_url: str) -> bool:
+    os.makedirs(destination, exist_ok=True)
     if not os.listdir(destination):
         base_path = kagglehub.dataset_download(kaggle_url)
         for item in os.listdir(base_path):
