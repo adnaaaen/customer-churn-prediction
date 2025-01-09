@@ -3,3 +3,4 @@ camel-converter==4.0.1
 pandas
 numpy
 matplotlib
+scikit-learn==1.6.0

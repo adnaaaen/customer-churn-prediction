@@ -3,11 +3,11 @@ from app import logger
 from utils import load_dataset, save_dataset
 
 
-class DataCleaningPipeline:
+class DataCleaning:
 
     def clean_data_format(self) -> bool:
-        self.df = load_dataset("merged/customer_churn.csv")
-        logger.info(">>>DATA FORMAT CLEANING START<<<")
+        self.df = load_dataset("cleaned/merged.csv")
+        logger.info("data format cleaning start")
         try:
             # change column format into snake case
             self.df.columns = [
@@ -23,31 +23,31 @@ class DataCleaningPipeline:
                 axis=1,
             ).columns
             self.df[to_integer] = self.df[to_integer].astype(dtype="Int16")
-            logger.info(">>>DATA FORMAT CLEANING END<<<")
+            logger.info("data format cleaning end")
             return True
 
         except Exception as e:
-            logger.error(f">>>EXCEPTION OCCURRED: {e}<<<")
+            logger.error(f"exception occurred: {e}")
             return False
 
     def handle_missing_values(self) -> bool:
         try:
-            logger.info(">>>MISSING VALUES HANDLING START<<<")
+            logger.info("missing values handling start")
 
             self.df = self.df.loc[self.df.isna().mean(axis=1) * 100 < 1]
 
-            logger.info(">>>MISSING VALUES HANDLING END<<<")
+            logger.info("missing values handling end")
 
             save_dataset(df=self.df, path="cleaned/cleaned.csv")
             return True
         except Exception as e:
-            logger.error(f">>>EXCEPTION OCCURRED: {e}<<<")
+            logger.error(f"exception occurred: {e}")
             return False
 
     def run(self) -> bool:
         if all((self.clean_data_format(), self.handle_missing_values())):
-            logger.info(">>>DATA CLEANING PIPELINE RUN SUCCESSFULLY!<<<")
+            logger.info("DATA CLEANING PIPELINE RUN SUCCESSFULLY!")
             return True
 
-        logger.info(">>>DATA CLEANING PIPELINE FAILED SOMEWHERE!<<<")
+        logger.info("DATA CLEANING PIPELINE FAILED!")
         return False
