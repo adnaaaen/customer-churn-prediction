@@ -1,10 +1,10 @@
 from app import logger
-from pipelines import DataIngestionPipeline, DataCleaningPipeline
+from stages import DataIngestion, DataCleaning
 
 logger.info("Application started")
 
-data_ingestion = DataIngestionPipeline()
-data_cleaning = DataCleaningPipeline()
+data_ingestion = DataIngestion()
+data_cleaning = DataCleaning()
 
 data_ingestion.run()
 data_cleaning.run()

@@ -5,6 +5,7 @@ from app import logger
 
 DATASOURCE_PATH = ProjectPaths.get_dir("DATASET_PATH")
 
+
 def load_dataset(path: str) -> pd.DataFrame:
     destination = os.path.join(DATASOURCE_PATH, path)
     if os.path.exists(destination):
