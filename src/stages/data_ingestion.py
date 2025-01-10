@@ -1,6 +1,6 @@
 import pandas as pd
 from app import logger
-from utils import get_from_kaggle, load_dataset, save_dataset
+from utils import get_from_kaggle, load_dataset, save_dataset, is_exists
 
 
 class DataIngestion:
@@ -29,6 +29,19 @@ class DataIngestion:
             return False
 
     def run(self) -> bool:
+        if all(
+            (
+                is_exists(
+                    "DATASET_PATH", "raw/customer_churn_dataset-training-master.csv"
+                ),
+                is_exists(
+                    "DATASET_PATH", "raw/customer_churn_dataset-testing-master.csv"
+                ),
+            )
+        ):
+            logger.info("raw data alrady exists!, SKIP DATA INGESTION!")
+            return True
+
         download_status = self.download_dataset()
         load_status = self.contact_datasets()
         if download_status and load_status:
