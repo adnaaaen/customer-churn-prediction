@@ -1,6 +1,6 @@
 from camel_converter import to_snake
 from app import logger
-from utils import load_dataset, save_dataset
+from utils import load_dataset, save_dataset, is_exists
 
 
 class DataCleaning:
@@ -45,6 +45,11 @@ class DataCleaning:
             return False
 
     def run(self) -> bool:
+
+        if is_exists("DATASET_PATH", "cleaned/cleaned.csv"):
+            logger.info("cleaned dataset already exists, SKIP DATA CLEANING")
+            return True
+
         if all((self.clean_data_format(), self.handle_missing_values())):
             logger.info("DATA CLEANING PIPELINE RUN SUCCESSFULLY!")
             return True
