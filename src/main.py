@@ -1,4 +1,4 @@
-from app import logger
+from src.app import logger
 from src.stages import DataIngestion, DataCleaning, DataPreprocessing, ModelBuilding
 
 logger.info("Application started")

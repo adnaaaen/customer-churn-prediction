@@ -1,17 +1,16 @@
 import pandas as pd
-from app import logger
-from utils import get_from_kaggle, load_dataset, save_dataset, is_exists
+from src.app import logger
+from src.utils import download_from_drive, load_dataset, save_dataset, is_exists
 
 
 class DataIngestion:
 
     def download_dataset(self) -> bool:
-        kaggle_url = "muhammadshahidazeem/customer-churn-dataset"
+        df_1_url = "muhammadshahidazeem/customer-churn-dataset"
+        df_2_url = "muhammadshahidazeem/customer-churn-dataset"
         try:
-            get_from_kaggle(
-                path="raw",
-                url=kaggle_url,
-            )
+            download_from_drive(path="raw/customer-chrun-train.csv", url=df_1_url)
+            download_from_drive(path="raw/customer-chrun-test.csv", url=df_2_url)
             return True
         except Exception as e:
             logger.error(f"exception occurred : {e}")
@@ -19,8 +18,8 @@ class DataIngestion:
 
     def contact_datasets(self) -> bool:
         try:
-            train_df = load_dataset("raw/customer_churn_dataset-training-master.csv")
-            test_df = load_dataset("raw/customer_churn_dataset-testing-master.csv")
+            train_df = load_dataset("raw/customer-churn-training.csv")
+            test_df = load_dataset("raw/customer-churn-testing.csv")
             df = pd.concat([train_df, test_df])
             save_dataset(df=df, path="cleaned/merged.csv")
             return True
