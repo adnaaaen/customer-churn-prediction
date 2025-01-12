@@ -41,7 +41,7 @@ def load_joblib(dir_name: str, path: str) -> Any:
     destination = os.path.join(PATH_NAME, path)
     if os.path.exists(destination):
         data = joblib.load(destination)
-        logger.error(f"joblib file loaded from {destination}")
+        logger.info(f"joblib file loaded from {destination}")
         return data
 
 

@@ -6,11 +6,11 @@ from src.utils import download_from_drive, load_dataset, save_dataset, is_exists
 class DataIngestion:
 
     def download_dataset(self) -> bool:
-        df_1_url = "muhammadshahidazeem/customer-churn-dataset"
-        df_2_url = "muhammadshahidazeem/customer-churn-dataset"
+        df_1_url = "https://drive.google.com/uc?id=1yn17jpwzGSHd-D0UamL2iAVuycfkZvkR"
+        df_2_url = "https://drive.google.com/uc?id=1JSLW6XOfxHHE912SbhRb2YtAdvWOGlBf"
         try:
-            download_from_drive(path="raw/customer-chrun-train.csv", url=df_1_url)
-            download_from_drive(path="raw/customer-chrun-test.csv", url=df_2_url)
+            download_from_drive(path="raw/customer-churn-train.csv", url=df_1_url)
+            download_from_drive(path="raw/customer-churn-test.csv", url=df_2_url)
             return True
         except Exception as e:
             logger.error(f"exception occurred : {e}")
@@ -18,8 +18,8 @@ class DataIngestion:
 
     def contact_datasets(self) -> bool:
         try:
-            train_df = load_dataset("raw/customer-churn-training.csv")
-            test_df = load_dataset("raw/customer-churn-testing.csv")
+            train_df = load_dataset("raw/customer-churn-train.csv")
+            test_df = load_dataset("raw/customer-churn-test.csv")
             df = pd.concat([train_df, test_df])
             save_dataset(df=df, path="cleaned/merged.csv")
             return True
@@ -30,12 +30,8 @@ class DataIngestion:
     def run(self) -> bool:
         if all(
             (
-                is_exists(
-                    "DATASET_PATH", "raw/customer_churn_dataset-training-master.csv"
-                ),
-                is_exists(
-                    "DATASET_PATH", "raw/customer_churn_dataset-testing-master.csv"
-                ),
+                is_exists("DATASET_PATH", "raw/customer-churn-train.csv"),
+                is_exists("DATASET_PATH", "raw/customer-churn-test.csv"),
             )
         ):
             logger.info("raw data alrady exists!, SKIP DATA INGESTION!")
