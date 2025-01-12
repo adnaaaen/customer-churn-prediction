@@ -1,10 +1,9 @@
-import pandas as pd
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OrdinalEncoder, StandardScaler
 
-from utils import save_dataset, load_dataset, is_exists
-from app import logger
+from src.utils import load_dataset, is_exists, save_joblib
+from src.app import logger
 
 
 class DataPreprocessing:
@@ -14,7 +13,6 @@ class DataPreprocessing:
 
             df = load_dataset("cleaned/cleaned.csv")
             X = df.drop(["churn"], axis=1)
-            Y = df["churn"]
 
             categorical_features = X.select_dtypes("object").columns
             numerical_features = X.select_dtypes("number").columns
@@ -30,19 +28,19 @@ class DataPreprocessing:
                     ("categorical", categorical_pipeline, categorical_features),
                 ]
             )
-            preprocessed = pipeline.fit_transform(X)
-            transformed_df = pd.DataFrame(preprocessed, columns=X.columns)
-            transformed_df["churn"] = Y
+            preprocessed = pipeline.fit(X)
+            save_joblib(preprocessed, "PIPELINE_PATH", "preprocessor.joblib")
 
-            save_dataset(df=transformed_df, path="cleaned/transformed.csv")
             return True
         except Exception as e:
             logger.error(f"exception occured on data transformation : {e}")
             return False
 
     def run(self) -> bool:
-        if is_exists("DATASET_PATH", "cleaned/transformed.csv"):
-            logger.info("transformed dataset already exists, SKIP DATA PREPROCESSING!")
+        if is_exists("PIPELINE_PATH", "preprocessor.joblib"):
+            logger.info(
+                "preprocessor pipeline has already exists, SKIP DATA PREPROCESSING!"
+            )
             return True
         transformed_status = self.transform()
         if transformed_status:

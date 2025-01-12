@@ -1,17 +1,17 @@
+from sklearn.pipeline import Pipeline
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 
-from utils import load_dataset, save_joblib, is_exists
-from app import logger
+from src.utils import load_dataset, save_joblib, is_exists, load_joblib
+from src.app import logger
 
 
 class ModelBuilding:
 
     def setup_pipeline(self) -> bool:
         try:
-            df = load_dataset("cleaned/transformed.csv")
+            df = load_dataset("cleaned/cleaned.csv")
 
-            # X , Y split
             X = df.drop(columns=["churn"])
             Y = df["churn"]
             logger.info("feature/target split completed")
@@ -21,6 +21,8 @@ class ModelBuilding:
             )
             logger.info("train/test split completed")
 
+            preprocessor = load_joblib("PIPELINE_PATH", "preprocessor.joblib")
+
             best_params: dict = {
                 "n_estimators": 200,
                 "max_depth": 15,
@@ -28,9 +30,15 @@ class ModelBuilding:
             }
 
             estimator: RandomForestClassifier = RandomForestClassifier(**best_params)
-            model = estimator.fit(x_train, y_train)
+
+            pipeline = Pipeline(
+                steps=[("preprocessor", preprocessor), ("model", estimator)]
+            )
+
+            model = pipeline.fit(x_train, y_train)
+
             logger.info("model trained successfully")
-            save_joblib(model, "random_forest_model.joblib")
+            save_joblib(model, "MODEL_PATH", "random_forest_model.joblib")
             return True
 
         except Exception as e:
