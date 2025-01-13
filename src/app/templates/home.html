@@ -1,3 +1,81 @@
-<html>
-  {{ prediction }}
-</html>
+{% extends 'base.html'%}
+
+{%block page_title%} Home | Customer Churn {%endblock%}
+
+{%block content%}
+<div class="main">
+    <h1 class="page-title">Customer Churn Prediction</h1>
+    <div class="between">
+        <div class="center">
+        <ul>
+            <li><strong>Customer Churn</strong> is </li>
+            <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis, blanditiis.</li>
+            <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure, amet.</li>
+            <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore, reprehenderit.</li>
+            <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Unde, tempore?</li>
+        </ul>
+        </div>
+        <div class="center">
+            <a href="{{url_for('predict')}}"><button class="btn">Make Prediction</button></a>
+        </div>
+    </div>
+</div>
+{%endblock%}
+
+{%block footer%}
+<div class="about-section evenly">
+    <div class="">
+        <h4>About me</h4>
+        <p>I'm <a href="https://linktr.ee/adnaaaen">Adnan</a>, a passionate Software Engineer. You can find the source code of the project on the <a href="https://github.com/adnaaaen/customer-churn-prediction/">Github Repo🚀</a></p>
+
+        💼 Get in touch with me,
+        <nav class="link-bar">
+            <a href="https://github.com/adnaaaen">Github</a>
+            <a href="https://www.linkedin.com/in/adnaaaen/">LinkedIn</a>
+        </nav>
+    </div>
+    <div class="center">
+        <table>
+            <tr>
+                <th colspan="3">Technologies Used</th>
+            </tr>
+            <tr>
+                <th colspan="1">Languages</th>
+                <th colspan="1">Tools</th>
+                <th colspan="1">Libraries</th>
+            </tr>
+            <tr>
+                <td><a href="https://www.python.org/">Python</a></td>
+                <td><a href="https://www.docker.com/">Docker</a></td>
+                <td><a href="">Pandas</a></td>
+            </tr>
+            <tr>
+                <td><a href="https://en.wikipedia.org/wiki/HTML">HTML/CSS</a></td>
+                <td><a href="https://jinja.palletsprojects.com/en/stable/">Jinja Templating</a></td>
+                <td><a href="">Numpy</a></td>
+            </tr>
+            <tr>
+                <td><a href="https://www.markdownguide.org/">Markdown</a></td>
+                <td><a href="https://github.com/features/actions">Github Actions</a></td>
+                <td><a href="">Matplotlib</a></td>
+            </tr>
+            <tr>
+                <td><a href=""></a></a></td>
+                <td><a href="https://docs.pytest.org/en/stable/">PyTest</a></td>
+                <td><a href="">Seaborn</a></td>
+            </tr>
+            <tr>
+                <td><a href=""></a></a></td>
+                <td><a href=""></a></td>
+                <td><a href="">Sklearn</a></td>
+            </tr>
+            <tr>
+                <td><a href=""></a></a></td>
+                <td><a href=""></a></td>
+                <td><a href="">joblib</a></td>
+            </tr>
+        </table>
+    </div>
+    
+</div>
+{%endblock%}

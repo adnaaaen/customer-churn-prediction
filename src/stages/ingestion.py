@@ -1,5 +1,5 @@
 import pandas as pd
-from src.app import logger
+from config import logger
 from src.utils import download_from_drive, load_dataset, save_dataset, is_exists
 
 

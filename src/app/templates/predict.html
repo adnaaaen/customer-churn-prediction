@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{%block page_title%}Predict | Customer Churn{%endblock%}
+
+{%block content%}
+<div class="main">
+    <h1 class="page-title">predict with model</h1>
+
+    <p>you can download the input feature 'csv' template from below👇.</p>
+    <form action="{{url_for('download_template')}}" method="post">
+        <input type="submit" value="Download Template" class="btn">
+    </form>
+    <div>
+        <form action="{{url_for('make_prediction')}}" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" id="file" class="file-input">
+            <input type="submit" value="Get Prediction" class="btn">
+        </form>
+    </div>
+
+    <div class="prediction">
+
+    </div>
+</div>
+{%endblock%}
+

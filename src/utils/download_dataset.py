@@ -1,7 +1,7 @@
 import gdown
 import os
 from config import ProjectPaths
-from src.app import logger
+from config import logger
 
 DATASOURCE_PATH = ProjectPaths.get_dir("DATASET_PATH")
 

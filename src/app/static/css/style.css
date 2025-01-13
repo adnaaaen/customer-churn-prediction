@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root{
+    --primary-bg: #111010;
+    --secondary-bg: black;
+    scroll-behavior: smooth;
+    background-color: var(--primary-bg);
+    color: white;
+    line-height: 30px;
+    letter-spacing: 1.5px;
+    font-family: "Poppins", serif;
+}
+
+body{
+    margin: 0;
+}
+
+.main{
+    height: 100vh;
+    width: full;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 50%;
+}
+
+.between{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 80%;
+}
+
+.evenly{
+    display: flex;
+    justify-content: space-evenly;
+    width: full;
+    height: 80%;
+}
+
+.flex-col{
+    flex-direction: column;
+}
+
+.flex-row{
+    flex-direction: row;
+}
+
+.half-width{
+    width: 20%;
+}
+
+.link-bar{
+    background-color: rgb(45, 45, 45);
+    display: flex;
+    flex-direction: row;
+    padding: 6px;
+    border-radius: 12px;
+    justify-content: space-evenly;
+}
+
+.btn{
+    background-color: green;
+    min-width: 100px;
+    padding: 6px;
+    padding-left: 30px;
+    padding-right: 30px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.btn:hover{
+    background-color: rgb(1, 83, 1);
+}
+
+.page-title{
+    background-color: black;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    user-select: none;
+    text-transform: uppercase;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+    color: rgba(79, 9, 192, 0.79);
+}
+
+table{
+    padding: 20px;
+    background-color: black;
+    border-radius: 20px;
+    user-select: none;
+}
+
+td{
+    border-radius: 50px;
+    padding: 5px;
+    text-transform: capitalize;
+    text-align: left;
+    padding-left: 20px;
+    padding-right: 20px;
+    cursor: pointer;
+}
+
+th{
+    padding: 10px;
+    color: rgba(73, 73, 73, 0.82);
+}
+
+
+td:hover{
+    border: 1px solid rgb(50, 50, 50);
+}
+
+.about-section{
+    user-select: none;
+    min-height: 80px;
+    background-color: black;
+    padding: 40px;
+}
+
+.prediction{
+    width: 60%;
+    max-width: 70%;
+    height: 40%;
+    max-height: 50%;
+    overflow-x: hidden;
+    background-color: red;
+    padding: 20px;
+    background-color: black;
+    border-radius: 12px;
+}
+
+.file-input{
+    outline: none;
+    padding: 20px;
+    font-size: 16px;
+    border: none;
+}
