@@ -3,7 +3,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 
 from src.utils import load_dataset, save_joblib, is_exists, load_joblib
-from src.app import logger
+from config import logger
 
 
 class ModelBuilding:

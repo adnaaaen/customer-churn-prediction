@@ -3,7 +3,7 @@ import os
 import pandas as pd
 import joblib
 from config import ProjectPaths
-from src.app import logger
+from config import logger
 
 
 DATASOURCE_PATH = ProjectPaths.get_dir("DATASET_PATH")

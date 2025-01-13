@@ -3,7 +3,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OrdinalEncoder, StandardScaler
 
 from src.utils import load_dataset, is_exists, save_joblib
-from src.app import logger
+from config import logger
 
 
 class DataPreprocessing:

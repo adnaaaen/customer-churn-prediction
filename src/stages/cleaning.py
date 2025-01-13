@@ -1,5 +1,5 @@
 from camel_converter import to_snake
-from src.app import logger
+from config import logger
 from src.utils import load_dataset, save_dataset, is_exists
 
 

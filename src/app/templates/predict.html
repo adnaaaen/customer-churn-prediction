@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{%block page_title%}Predict | Customer Churn{%endblock%}
+
+{%block content%}
+<div class="main">
+    <h1 class="page-title">predict with model</h1>
+
+<div class="center">
+    <p>you can download the input 'csv' file template by clicking👉</p>
+    <form action="{{url_for('download_template')}}" method="post">
+        <input type="submit" value="Download" class="btn">
+    </form>
+</div>
+<div class="center flex-col">
+        <p class="note"><strong>NOTE! </strong>Please ensure to upload a CSV file containing the required features. To streamline the process, we recommend downloading the provided template, filling in your data, and uploading the completed file.</p>
+
+        <form action="{{url_for('make_prediction')}}" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" id="file" class="file-input">
+            <input type="submit" value="Predict" class="btn">
+        </form>
+        <div class="prediction">
+    
+        </div>
+    </div>
+
+</div>
+{%endblock%}
+
