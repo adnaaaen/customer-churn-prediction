@@ -110,13 +110,11 @@ table{
 }
 
 td{
-    border-radius: 50px;
     padding: 5px;
     text-transform: capitalize;
     text-align: left;
     padding-left: 20px;
     padding-right: 20px;
-    cursor: pointer;
 }
 
 th{
@@ -124,9 +122,8 @@ th{
     color: rgba(73, 73, 73, 0.82);
 }
 
-
-td:hover{
-    border: 1px solid rgb(50, 50, 50);
+li{
+    margin-bottom: 10px;
 }
 
 .about-section{
@@ -138,11 +135,10 @@ td:hover{
 
 .prediction{
     width: 60%;
-    max-width: 70%;
-    height: 40%;
-    max-height: 50%;
+    max-width: 80%;
+    height: auto;
+    max-height: 70%;
     overflow-x: hidden;
-    background-color: red;
     padding: 20px;
     background-color: black;
     border-radius: 12px;
@@ -153,4 +149,15 @@ td:hover{
     padding: 20px;
     font-size: 16px;
     border: none;
+}
+
+.note{
+    width: 60%;
+    height: 20%;
+    user-select: none;
+    color: rgb(39, 5, 235);
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid rgb(10, 2, 124);
 }
