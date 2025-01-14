@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{%block page_title%} 404 | Page Not Found {%endblock%}
+
+{%block content%}
+<div class="center flex-col">
+    <h2>PAGE NOT FOUND!</h2>
+<p>
+    Go To <a href="{{ url_for('home') }}">Home🏠</a>
+</p>
+</div>
+{%endblock%}

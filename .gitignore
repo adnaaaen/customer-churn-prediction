@@ -7,7 +7,7 @@ __pycache__/
 *.so
 **.csv
 **.joblib
-!**input_template.csv
+!**customer_churn_ip_template.csv
 
 # Distribution / packaging
 .Python
