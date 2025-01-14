@@ -35,6 +35,7 @@ class ModelBuilding:
                 steps=[("preprocessor", preprocessor), ("model", estimator)]
             )
 
+            logger.info("model training...(it may take a while)")
             model = pipeline.fit(x_train, y_train)
 
             logger.info("model trained successfully")
