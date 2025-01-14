@@ -4,12 +4,15 @@ from flask import (
     redirect,
     url_for,
     request,
-    send_from_directory,
+    send_from_directory 
 )
 import pandas as pd
+from src.utils import predict_with_pipeline
 
 
 app = Flask(__name__)
+
+ALLOW_FILE_EXTENSIONS = ["csv"]
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -22,18 +25,19 @@ def home():
     return render_template("home.html")
 
 
-@app.get("/predict/")
-def predict():
-    return render_template("predict.html")
+@app.route("/model/", methods=["GET", "POST"])
+def model():
+    return render_template("model.html")
 
 
 @app.post("/predict/")
 def make_prediction():
-    if request.method == "POST":
+    if request.files["file"] and request.files["file"].filename.split(".")[1] in ALLOW_FILE_EXTENSIONS:
         filename = request.files["file"]
         df = pd.read_csv(filename)
-        print(df.shape)
-    return render_template("predict.html")
+        prediction = predict_with_pipeline(df)
+        return render_template("model.html", prediction=enumerate(prediction, start=1))
+    return redirect(url_for('model'))
 
 
 @app.post("/download/")
@@ -41,3 +45,7 @@ def download_template():
     return send_from_directory(
         "uploads", "customer_churn_ip_template.csv", as_attachment=True
     )
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('404.html'), 404

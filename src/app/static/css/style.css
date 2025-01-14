@@ -134,6 +134,7 @@ li{
 }
 
 .prediction{
+    font-size: 14px;
     width: 60%;
     max-width: 80%;
     height: auto;
@@ -160,4 +161,15 @@ li{
     padding: 10px;
     border-radius: 5px;
     border: 1px solid rgb(10, 2, 124);
+}
+
+.warning{
+    width: 60%;
+    height: 20%;
+    user-select: none;
+    color: rgb(235, 135, 5);
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid rgb(124, 104, 2);
 }
