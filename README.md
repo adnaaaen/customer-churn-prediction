@@ -12,7 +12,7 @@ Custmer Churn Prediction
 ![Pandas](https://img.shields.io/badge/Pandas-000000?style=flat&logo=pandas&logoColor=white&labelColor=000000&border-radius=12)
 ![Numpy](https://img.shields.io/badge/Numpy-000000?style=flat&logo=numpy&logoColor=white&labelColor=000000&border-radius=12)
 ![PyTest](https://img.shields.io/badge/Pytest-000000?style=flat&logo=pytest&logoColor=white&labelColor=000000&border-radius=12)
-![Test](https://img.shields.io/badge/Test-Pass-green?style=border-radius=12&labelColor=black)
+![Test](https://github.com/adnaen/customer-churn-prediction/actions/workflows/ci-test.yml/badge.svg)
 </div>
 
 
